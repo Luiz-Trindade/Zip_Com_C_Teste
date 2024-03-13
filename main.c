@@ -24,18 +24,33 @@
 
 int main(int argc, char *argv[]){
 
-	// Verificação do número de argumentos
+	//	Verificação do número de argumentos
 	if (argc != 2){
 		printf("%d\n", argc);
 		fprintf(stderr, "Quantidade de argumentos inválida!\n");
 		return 1;
 	}
 
-	// Se o número de argumentos for válido,
-	// o primeiro argumento é lido
+	//	Se o número de argumentos for válido,
+	//	o primeiro argumento é lido
 	char *file = argv[1];
 
+	/* 
+		Criação de um ponteiro do tipo "zip_t",
+		que é um tipo próprio da biblioteca libzip/zip.h.
+
+		O ponteiro recebe o nome de "zip_archive", que
+		recebe o retorno da leitura da função zip_open.
+
+		A função "zip_open" recebe como parâmetros o
+		arquivo, o modo de abertura e NULL indica que 
+		não será reservado nenhum valor para alocação
+		de memória (Ainda pretendo estudar posteriormente 
+		sobre isso).
+	*/
 	zip_t *zip_archive = zip_open(file, ZIP_RDONLY, NULL);
+
+	//	Verificação da leitura bem sucedida ou não.
 	if (!zip_archive){
 		fprintf(stderr, "Erro ao abrir o arquivo!\n");
 		return 1;
