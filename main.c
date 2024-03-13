@@ -22,13 +22,18 @@
 #include <stdio.h>
 #include <zip.h>
 
+//	Função personalizada para exibir mensagens de erro.
+int die(char *msg){
+	fprintf(stderr, "%s\n", msg);
+	return 1;
+}
+
 int main(int argc, char *argv[]){
 
 	//	Verificação do número de argumentos
 	if (argc != 2){
 		printf("%d\n", argc);
-		fprintf(stderr, "Quantidade de argumentos inválida!\n");
-		return 1;
+		die("Quantidade de argumentos inválida!");
 	}
 
 	//	Se o número de argumentos for válido,
@@ -52,8 +57,7 @@ int main(int argc, char *argv[]){
 
 	//	Verificação da leitura bem sucedida ou não.
 	if (!zip_archive){
-		fprintf(stderr, "Erro ao abrir o arquivo!\n");
-		return 1;
+		die("Erro ao abrir o arquivo!");
 	}
 
 	printf("Arquivo \"%s\" lido com sucesso!\n", file);
