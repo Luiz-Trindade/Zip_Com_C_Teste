@@ -22,12 +22,6 @@
 #include "utils.h"
 #include <zip.h>
 
-//	Função personalizada para exibir mensagens de erro.
-int die(char *msg){
-	fprintf(stderr, "%s\n", msg);
-	return 1;
-}
-
 int main(int argc, char *argv[]){
 
 	//	Verificação do número de argumentos
