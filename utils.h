@@ -42,6 +42,13 @@
 #include <stdlib.h>
 #include <string.h>
 
+
+//	Função para mensagens de erro.
+int die(char *message){
+	fprintf(stderr, "%s\n", message);
+	exit(1);
+}
+
 /*
 	Simples função de "inputf", que é
 	um "input formatado", que recebe como
@@ -68,8 +75,7 @@ int inputf(const char *type, const char *message, void *adress){
 		scanf("%s", (char *)adress);
 	}
 	else{
-		fprintf(stderr, "Invalid type!\n");
-		exit(1);
+		die("Invalid type!\n");
 	}
 
 	return 0;
