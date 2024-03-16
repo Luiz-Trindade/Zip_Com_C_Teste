@@ -19,7 +19,7 @@
 *********************************************************************	
 */
 
-#include <stdio.h>
+#include "utils.h"
 #include <zip.h>
 
 //	Função personalizada para exibir mensagens de erro.
